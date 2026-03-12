@@ -1,11 +1,12 @@
 const express = require("express");
 const { chromium: playwrightCore } = require("playwright-core");
 const { addExtra } = require("playwright-extra");
-const stealth = require("puppeteer-extra-plugin-stealth")();
+const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+
 const chromium = require("@sparticuz/chromium");
 
 const playwright = addExtra(playwrightCore);
-playwright.use(stealth);
+playwright.use(StealthPlugin());
 
 const app = express();
 
