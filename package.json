@@ -13,12 +13,12 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@sparticuz/chromium": "^143.0.4",
-    "express": "^5.2.1",
-    "playwright-core": "^1.58.2",
-    "playwright-extra": "^4.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2"
-  },
+  "@sparticuz/chromium": "123.0.1",
+  "express": "^5.2.1",
+  "playwright-core": "1.43.0",
+  "playwright-extra": "^4.3.6",
+  "puppeteer-extra-plugin-stealth": "^2.11.2"
+},
   "devDependencies": {
     "nodemon": "^3.1.14"
   }
