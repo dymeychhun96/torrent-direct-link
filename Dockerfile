@@ -1,18 +1,22 @@
-# Use the official Playwright image which includes all OS dependencies
-FROM mcr.microsoft.com/playwright:v1.43.0-jammy
+# Updated to perfectly match your new Playwright npm package
+FROM mcr.microsoft.com/playwright:v1.58.2-jammy
 
-# Set the working directory
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3000
+
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package files and install Node.js dependencies
+# Copy dependency manifests and install
 COPY package*.json ./
 RUN npm install
 
 # Copy the rest of your application code
 COPY . .
 
-# Expose the port your Express app runs on (update to match your server.js port)
+# Expose the port
 EXPOSE 3000
 
-# Start the server
+# Start the Node.js server
 CMD ["npm", "start"]
