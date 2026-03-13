@@ -49,20 +49,19 @@ app.get("/torrent/:hash", async (req, res) => {
     await page.waitForTimeout(2000);
 
     // 2. Add temporary logging to see EVERY network request happening after the click
-    page.on("request", (request) =>
-      console.log(">> Request:", request.method(), request.url()),
-    );
+    // page.on("request", (request) =>
+    //   console.log(">> Request:", request.method(), request.url()),
+    // );
 
     let downloadResponse;
     try {
       [downloadResponse] = await Promise.all([
         page.waitForResponse(
-          // 3. Loosen the strict POST requirement temporarily
           (response) => response.url().includes("download-file"),
           { timeout: 30000 },
         ),
-        // 4. Force the click in case another invisible element is overlapping it
-        downloadBtn.click({ force: true }),
+        // This bypasses the UI and triggers the HTML node's click event directly
+        downloadBtn.evaluate((buttonNode) => buttonNode.click()),
       ]);
     } catch (waitError) {
       // 5. If it fails, take a screenshot so you can physically see the problem!
