@@ -14,7 +14,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://yts.dev",
+    origin: ["https://yts.dev", "https://yts-torrent.vercel.app"],
   }),
 );
 
