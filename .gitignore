@@ -1,2 +1,3 @@
-/node_modules
-/server-backup.js
+node_modules
+server-backup.js
+server-vercel.js

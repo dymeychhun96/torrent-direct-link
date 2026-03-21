@@ -1,9 +1,16 @@
 const express = require("express");
+const cors = require("cors");
 const { chromium } = require("playwright");
 const { addExtra } = require("playwright-extra");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 const path = require("path");
 const fs = require("fs");
+
+app.use(
+  cors({
+    origin: "https://yts.dev",
+  }),
+);
 
 // Initialize Playwright Extra with the stealth plugin
 const chromiumExtra = addExtra(chromium);
