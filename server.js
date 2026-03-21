@@ -6,17 +6,18 @@ const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 const path = require("path");
 const fs = require("fs");
 
+// Initialize Playwright Extra with the stealth plugin
+const chromiumExtra = addExtra(chromium);
+chromiumExtra.use(StealthPlugin());
+
+const app = express();
+
 app.use(
   cors({
     origin: "https://yts.dev",
   }),
 );
 
-// Initialize Playwright Extra with the stealth plugin
-const chromiumExtra = addExtra(chromium);
-chromiumExtra.use(StealthPlugin());
-
-const app = express();
 // Render assigns a port via the PORT environment variable. Fallback to 3000 for local testing.
 const PORT = process.env.PORT || 3000;
 
